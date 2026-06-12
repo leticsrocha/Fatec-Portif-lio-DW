@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios Java Script</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            color: #333;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+
+        .bloco-exercicio {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #edf2f7;
+            padding-bottom: 8px;
+        }
+
+        .formulario-grupo {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #3182ce;
+        }
+
+        button {
+            background-color: #3182ce;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background-color: #2b6cb0;
+        }
+
+        .caixa-resultado {
+            margin-top: 15px;
+            padding: 12px;
+            background-color: #f8fafc;
+            border-left: 4px solid #3182ce;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            min-height: 45px;
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Painel de Exercícios</h1>
+
+    <div class="bloco-exercicio">
+        <h2>Exercício 1: Maior de Idade</h2>
+        <div class="formulario-grupo">
+            <label>Digite a idade:</label>
+            <input type="number" id="idade-valor">
+        </div>
+        <button onclick="verificarIdade()">Verificar</button>
+        <div class="caixa-resultado" id="resultado-1">O resultado aparecerá aqui.</div>
+    </div>
+
+    <div class="bloco-exercicio">
+        <h2>Exercício 2: Calculadora de Média</h2>
+        <div class="formulario-grupo">
+            <label>Nota 1:</label>
+            <input type="number" id="nota-1" step="0.1">
+        </div>
+        <div class="formulario-grupo">
+            <label>Nota 2:</label>
+            <input type="number" id="nota-2" step="0.1">
+        </div>
+        <div class="formulario-grupo">
+            <label>Nota 3:</label>
+            <input type="number" id="nota-3" step="0.1">
+        </div>
+        <button onclick="calcularMedia()">Calcular Média</button>
+        <div class="caixa-resultado" id="resultado-2">O resultado aparecerá aqui.</div>
+    </div>
+
+    <div class="bloco-exercicio">
+        <h2>Exercício 3: Maior Número</h2>
+        <div class="formulario-grupo">
+            <label>Primeiro número:</label>
+            <input type="number" id="numero-A">
+        </div>
+        <div class="formulario-grupo">
+            <label>Segundo número:</label>
+            <input type="number" id="numero-B">
+        </div>
+        <button onclick="acharMaior()">Comparar</button>
+        <div class="caixa-resultado" id="resultado-3">O resultado aparecerá aqui.</div>
+    </div>
+
+    <div class="bloco-exercicio">
+        <h2>Exercício 4: Ímpar ou Par</h2>
+        <div class="formulario-grupo">
+            <label>Digite um número inteiro:</label>
+            <input type="number" id="numero-paridade">
+        </div>
+        <button onclick="verificarParidade()">Analisar</button>
+        <div class="caixa-resultado" id="resultado-4">O resultado aparecerá aqui.</div>
+    </div>
+
+    <div class="bloco-exercicio">
+        <h2>Exercício 5: Conversor de Temperatura</h2>
+        <div class="formulario-grupo">
+            <label>Graus Celsius (°C):</label>
+            <input type="number" id="temperatura-celsius">
+        </div>
+        <button onclick="converterTemperatura()">Converter para Fahrenheit</button>
+        <div class="caixa-resultado" id="resultado-5">O resultado aparecerá aqui.</div>
+    </div>
+
+    <div class="bloco-exercicio">
+        <h2>Exercício 6: Reajuste Salarial</h2>
+        <div class="formulario-grupo">
+            <label>Salário Atual (R$):</label>
+            <input type="number" id="salario-atual" step="0.01">
+        </div>
+        <div class="formulario-grupo">
+            <label>Percentual de Aumento (%):</label>
+            <input type="number" id="porcentagem-reajuste">
+        </div>
+        <button onclick="calcularReajuste()">Calcular Novo Salário</button>
+        <div class="caixa-resultado" id="resultado-6">O resultado aparecerá aqui.</div>
+    </div>
+
+    <div class="bloco-exercicio">
+        <h2>Exercício 7: Fatorial de um Número</h2>
+        <div class="formulario-grupo">
+            <label>Digite um número inteiro positivo:</label>
+            <input type="number" id="numero-fatorial">
+        </div>
+        <button onclick="calcularFatorial()">Calcular Fatorial</button>
+        <div class="caixa-resultado" id="resultado-7">O resultado aparecerá aqui.</div>
+    </div>
+</div>
+
+<script>
+    function verificarIdade() {
+        const idade = parseInt(document.getElementById('idade-valor').value);
+        const painel = document.getElementById('resultado-1');
+        
+        if (isNaN(idade)) {
+            painel.innerText = 'Por favor, insira um valor válido.';
+            return;
+        }
+
+        if (idade >= 18) {
+            painel.innerText = 'Maior de idade.';
+        } else {
+            painel.innerText = 'Menor de idade.';
+        }
+    }
+
+    function calcularMedia() {
+        const n1 = parseFloat(document.getElementById('nota-1').value);
+        const n2 = parseFloat(document.getElementById('nota-2').value);
+        const n3 = parseFloat(document.getElementById('nota-3').value);
+        const painel = document.getElementById('resultado-2');
+
+        if (isNaN(n1) || isNaN(n2) || isNaN(n3)) {
+            painel.innerText = 'Preencha as três notas corretamente.';
+            return;
+        }
+
+        const media = (n1 + n2 + n3) / 3;
+        
+        if (media >= 6) {
+            painel.innerText = 'Aprovado com média ' + media.toFixed(2);
+        } else {
+            painel.innerText = 'Reprovado com média ' + media.toFixed(2);
+        }
+    }
+
+    function acharMaior() {
+        const num1 = parseFloat(document.getElementById('numero-A').value);
+        const num2 = parseFloat(document.getElementById('numero-B').value);
+        const painel = document.getElementById('resultado-3');
+
+        if (isNaN(num1) || isNaN(num2)) {
+            painel.innerText = 'Preencha os dois campos.';
+            return;
+        }
+
+        if (num1 > num2) {
+            painel.innerText = 'O número ' + num1 + ' é maior.';
+        } else if (num2 > num1) {
+            painel.innerText = 'O número ' + num2 + ' é maior.';
+        } else {
+            painel.innerText = 'Os dois números são iguais.';
+        }
+    }
+
+    function verificarParidade() {
+        const numero = parseInt(document.getElementById('numero-paridade').value);
+        const painel = document.getElementById('resultado-4');
+
+        if (isNaN(numero)) {
+            painel.innerText = 'Insira um número.';
+            return;
+        }
+
+        if (numero % 2 === 0) {
+            painel.innerText = 'O número ' + numero + ' é Par.';
+        } else {
+            painel.innerText = 'O número ' + numero + ' é Ímpar.';
+        }
+    }
+
+    function converterTemperatura() {
+        const celsius = parseFloat(document.getElementById('temperatura-celsius').value);
+        const painel = document.getElementById('resultado-5');
+
+        if (isNaN(celsius)) {
+            painel.innerText = 'Insira a temperatura.';
+            return;
+        }
+
+        const fahrenheit = (celsius * 9/5) + 32;
+        painel.innerText = celsius + '°C equivale a ' + fahrenheit.toFixed(1) + '°F';
+    }
+
+    function calcularReajuste() {
+        const salario = parseFloat(document.getElementById('salario-atual').value);
+        const porcentagem = parseFloat(document.getElementById('porcentagem-reajuste').value);
+        const painel = document.getElementById('resultado-6');
+
+        if (isNaN(salario) || isNaN(porcentagem)) {
+            painel.innerText = 'Preencha todos os campos salariais.';
+            return;
+        }
+
+        const aumento = salario * (porcentagem / 100);
+        const novoSalario = salario + aumento;
+
+        painel.innerText = 'Aumento de R$ ' + aumento.toFixed(2) + '. Novo salário: R$ ' + novoSalario.toFixed(2);
+    }
+
+    function calcularFatorial() {
+        const numero = parseInt(document.getElementById('numero-fatorial').value);
+        const painel = document.getElementById('resultado-7');
+
+        if (isNaN(numero) || numero < 0) {
+            painel.innerText = 'Insira um número inteiro positivo.';
+            return;
+        }
+
+        let resultado = 1;
+        for (let i = 1; i <= numero; i++) {
+            resultado *= i;
+        }
+
+        painel.innerText = 'O fatorial de ' + numero + ' é ' + resultado;
+    }
+</script>
+
+</body>
+</html>
